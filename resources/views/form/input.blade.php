@@ -55,7 +55,7 @@
             <div class="mt-4 mb-0 row">
                 <div class="col-md-2">郵便番号<span class="badge bg-danger ms-2">必須</span></div>
                 <div class="col-sm-10">
-                    <span>〒</span><input type="text" name="zip" onKeyUp="AjaxZip3.zip2addr('zip', '', 'prefecture', 'city');" class="form-control form-control-inline" placeholder="0000000" value="{{ old('zip') }}">
+                    <input type="text" name="zip" onKeyUp="AjaxZip3.zip2addr('zip', '', 'prefecture', 'city');" class="form-control form-control-inline" placeholder="0000000" value="{{ old('zip') }}">
                     <p>郵便番号を入力いただきますと都道府県・市区町村の項目が自動入力されます。<br>
                         ハイフンなしで入力してください。<br>
                         半角数字で入力してください。</p>
