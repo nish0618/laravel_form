@@ -2,30 +2,30 @@
 
 @section('content')
 
-<div id="wrapper">
+<div class="container mt-5">
     <div>
         <p>インフォメーションでクーポン引き換え画面をご提示いただくとクーポンとお引き換えいたします。</p>
     </div>
     @if($coupon_flag === 0)
-        <div id="apply"><button class="js-modal-open change_btn">クーポンと引き換える</button></div>
+        <div id="apply"><button class="js-modal-open btn btn-primary">クーポンと引き換える</button></div>
         <div id="applied"><span>引き換え済み</span></div>
     @else
         <div id="applied"><span>引き換え済み</span></div>
     @endif
+</div>
 
-
-    <!-- ▼modal -->
-    <div class="modal js-modal">
-        <div class="modal__bg js-modal-close"></div>
-        <div class="modal__content">
-            <p>画面をインフォメーションスタッフに見せてから「引き換える」ボタンを押してください。<br>
-                必ずインフォメーションスタッフの前で画面をお提示ください。</p>
-            <p><span>また、一度 「引き換える」を押してしまうと<br>クーポンとお引き換えできませんので、予めご了承ください。</span></p>
-            <button class="js-modal-close">戻る</button>
-            <button class="js-modal-click">引き換える</button>
-        </div>
+<!-- ▼modal -->
+<div class="modal js-modal">
+    <div class="modal__bg js-modal-close"></div>
+    <div class="modal__content">
+        <p>画面をインフォメーションスタッフに見せてから「引き換える」ボタンを押してください。<br>
+            必ずインフォメーションスタッフの前で画面をお提示ください。</p>
+        <p><span>また、一度 「引き換える」を押してしまうと<br>クーポンとお引き換えできませんので、予めご了承ください。</span></p>
+        <button class="js-modal-close btn btn-secondary">戻る</button>
+        <button class="js-modal-click btn btn-primary">引き換える</button>
     </div>
-    <!-- ▲modal -->
+</div>
+<!-- ▲modal -->
 <script>
     $(function() {
         let unique_url = '{{ $unique_url }}';
