@@ -3,8 +3,15 @@
 @section('content')
 
 <div id="wrapper">
-    <section id="form_area">
-        <div class="inner">
+        <div class="container mt-5">
+            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">入力</li>
+                    <li class="breadcrumb-item active" aria-current="page">確認</li>
+                    <li class="breadcrumb-item">完了</li>
+                </ol>
+            </nav>
+
             <form action="{{ route('form.thanks') }}" method="post">
                 @csrf
                 <input type="hidden" name="user_agent" value="{{ $_SERVER['HTTP_USER_AGENT'] }}">
@@ -21,46 +28,45 @@
                 <div>
                     <p>入力内容にお間違えがなければ送信ボタンを押してください。</p>
 
-                    <dl>
-                        <dt><label>性別<span>＊</span></label></dt>
+                    <div>
+                        <p>性別</p>
                         <dd>{{ Config::get('const.GENDER')[$request['gender']] }}</dd>
                     </dl>
 
-                    <dl>
-                        <dt><label>年齢<span>＊</span></label></dt>
+                    <div>
+                        <p>年齢</p>
                         <dd>{{ Config::get('const.AGE')[$request['age']] }}</dd>
                     </dl>
 
-                    <dl>
-                        <dt><label>郵便番号<span>＊</span></label></dt>
+                    <div>
+                        <p>郵便番号</p>
                         <dd>{{ $request['zip'] }}</dd>
                     </dl>
 
-                    <dl>
-                        <dt><label>都道府県<span>＊</span></label></dt>
+                    <div>
+                        <p>都道府県</p>
                         <dd>{{ $request['prefecture'] }}</dd>
                     </dl>
 
-                    <dl>
-                        <dt><label>市区町村<span>＊</span></label></dt>
+                    <div>
+                        <p>市区町村</p>
                         <dd>{{ $request['city'] }}</dd>
                     </dl>
 
-                    <dl>
-                        <dt><label>Eメール<span>＊</span></label></dt>
+                    <div>
+                        <p>Eメール</p>
                         <dd>{{ $request['email'] }}</dd>
                     </dl>
 
                     <div>
-                        <button type="submit" name="button" id="back" value="back">前画面に戻る</button>
-                        <button id="loading_back" disabled>前画面に戻る</button>
-                        <button type="submit" name="button" id="submit" value="send">送信</button>
-                        <button id="loading" disabled>送信中</button>
+                        <button type="submit" name="button" id="back" value="back" class="btn btn-secondary mt-4">前画面に戻る</button>
+                        <button id="loading_back" class="btn btn-dark mt-4"disabled>前画面に戻る</button>
+                        <button type="submit" name="button" id="submit" value="send" class="btn btn-primary mt-4">送信</button>
+                        <button id="loading" class="btn btn-dark mt-4" disabled>送信中</button>
                     </div>
                 </div>
             </form>
         </div>
-    </section>
 </div>
 
 <script>
