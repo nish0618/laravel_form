@@ -38,7 +38,7 @@
 
                                     <div class="mx-2">
                                         <button type="submit" name="button" class="btn btn-sm btn-success" value="csv">
-                                            CSVダウンロード
+                                            CSV
                                         </button>
                                     </div>
                                 </div>
