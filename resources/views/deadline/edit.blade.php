@@ -8,13 +8,13 @@
                 <div class="card-header">終了日時設定リスト編集画面</div>
                 <div class="card-body">
                     @if ($message = Session::get('success'))
-                        <p>{{ $message }}</p>
+                    <p>{{ $message }}</p>
                     @endif
 
                     @if ($errors->any())
                     <ul>
                         @foreach ($errors->all() as $error)
-                            <p class="attention">{{ $error }}</p>
+                        <p class="attention">{{ $error }}</p>
                         @endforeach
                     </ul>
                     @endif
@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="name" class="col-md-6 col-form-label text-md-right">クーポン引き換え締め切り日時</label>
+                            <label for="name" class="col-md-6 col-form-label text-md-right">クーポン 引き換え締め切り日時</label>
                             <div class="col-md-4">
                                 <input type='text' name='end_gift_redemption' class="form-control" value='{{ $deadline->end_gift_redemption }}'><br>
                             </div>

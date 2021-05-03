@@ -43,15 +43,15 @@
                         </thead>
                         <tbody>
                             @if ($login_historys->isNotEmpty())
-                                @foreach ($login_historys as $login_history)
-                                    <tr>
-                                        <td class="align-middle text-center"><small>{{ $login_history->id }}</small></td>
-                                        <td class="align-middle text-center"><small>{{ $login_history->admin->name }}</small></td>
-                                        <td class="align-middle text-center"><small>{{ $login_history->user_agent }}</small></td>
-                                        <td class="align-middle text-center"><small>{{ $login_history->ip_adress }}</small></td>
-                                        <td class="align-middle text-center"><small>{{ $login_history->login_time }}</small></td>
-                                    </tr>
-                                @endforeach
+                            @foreach ($login_historys as $login_history)
+                            <tr>
+                                <td class="align-middle text-center"><small>{{ $login_history->id }}</small></td>
+                                <td class="align-middle text-center"><small>{{ $login_history->admin->name }}</small></td>
+                                <td class="align-middle text-center"><small>{{ $login_history->user_agent }}</small></td>
+                                <td class="align-middle text-center"><small>{{ $login_history->ip_adress }}</small></td>
+                                <td class="align-middle text-center"><small>{{ $login_history->login_time }}</small></td>
+                            </tr>
+                            @endforeach
                             @endif
                         </tbody>
                     </table>
@@ -59,7 +59,7 @@
                 <div class="card-footer py-4">
                     <div class="d-flex justify-content-center">
                         @if ($login_historys->isNotEmpty())
-                            {{ $login_historys->appends(request()->input())->links() }}
+                        {{ $login_historys->appends(request()->input())->links() }}
                         @endif
                     </div>
                 </div>

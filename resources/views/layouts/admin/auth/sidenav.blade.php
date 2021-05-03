@@ -9,7 +9,7 @@
 
     <div class="sidebar">
         <nav class="mt-5">
-            <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu"  >
+            <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu">
                 <li class="nav-header text-muted">Dashboard</li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.apply.index') }}">

@@ -27,14 +27,14 @@
                         </thead>
                         <tbody>
                             @if ($deadlines->isNotEmpty())
-                                @foreach ($deadlines as $deadline)
-                                    <tr>
-                                        <td class="align-middle text-center"><small>{{ $deadline->id }}</small></td>
-                                        <td class="align-middle text-center"><small>{{ $deadline->end_publication_period->format('Y-m-d H:i') }}</small></td>
-                                        <td class="align-middle text-center"><small>{{ $deadline->end_gift_redemption->format('Y-m-d H:i') }}</small></td>
-                                        <td class="align-middle text-center"><small><button type="button" class="btn btn-info" onclick="location.href='{{ route('admin.deadline.edit', $deadline->id) }}'">編集する</button></small></td>
-                                    </tr>
-                                @endforeach
+                            @foreach ($deadlines as $deadline)
+                            <tr>
+                                <td class="align-middle text-center"><small>{{ $deadline->id }}</small></td>
+                                <td class="align-middle text-center"><small>{{ $deadline->end_publication_period->format('Y-m-d H:i') }}</small></td>
+                                <td class="align-middle text-center"><small>{{ $deadline->end_gift_redemption->format('Y-m-d H:i') }}</small></td>
+                                <td class="align-middle text-center"><small><button type="button" class="btn btn-info" onclick="location.href='{{ route('admin.deadline.edit', $deadline->id) }}'">編集する</button></small></td>
+                            </tr>
+                            @endforeach
                             @endif
                         </tbody>
                     </table>
@@ -42,7 +42,7 @@
                 <div class="card-footer py-4">
                     <div class="d-flex justify-content-center">
                         @if ($deadlines->isNotEmpty())
-                            {{ $deadlines->appends(request()->input())->links() }}
+                        {{ $deadlines->appends(request()->input())->links() }}
                         @endif
                     </div>
                 </div>

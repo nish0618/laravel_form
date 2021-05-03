@@ -59,14 +59,14 @@
                         </thead>
                         <tbody>
                             @if ($forms->isNotEmpty())
-                                @foreach ($forms as $form)
-                                    <tr>
-                                        <td class="align-middle text-center"><small><a href="{{ route('admin.apply.show', $form->id) }}">{{ $form->id }}</a></small></td>
-                                        <td class="align-middle text-center"><small>{{ $form->email }}</small></td>
-                                        <td class="align-middle text-center"><small>{{ Config::get('const.COUPON_FLAG')[$form->coupon_flag] }}</small></td>
-                                        <td class="align-middle text-center"><small>{{ $form->created_at->format('Y-m-d H:i') }}</small></td>
-                                    </tr>
-                                @endforeach
+                            @foreach ($forms as $form)
+                            <tr>
+                                <td class="align-middle text-center"><small><a href="{{ route('admin.apply.show', $form->id) }}">{{ $form->id }}</a></small></td>
+                                <td class="align-middle text-center"><small>{{ $form->email }}</small></td>
+                                <td class="align-middle text-center"><small>{{ Config::get('const.COUPON_FLAG')[$form->coupon_flag] }}</small></td>
+                                <td class="align-middle text-center"><small>{{ $form->created_at->format('Y-m-d H:i') }}</small></td>
+                            </tr>
+                            @endforeach
                             @endif
                         </tbody>
                     </table>
@@ -74,7 +74,7 @@
                 <div class="card-footer py-4">
                     <div class="d-flex justify-content-center">
                         @if ($forms->isNotEmpty())
-                            {{ $forms->appends(request()->input())->links() }}
+                        {{ $forms->appends(request()->input())->links() }}
                         @endif
                     </div>
                 </div>
