@@ -25,7 +25,8 @@ class ApplyController extends Controller
         }
 
         return view('admin.apply.index', [
-            'forms' => $this->form->acquisitionFormList($request),
+            'forms'      => $this->form->acquisitionFormList($request),
+            'data_count' => $this->form->acquisitionDataCount(),
         ]);
     }
 

@@ -59,7 +59,7 @@
                                 <td class="border-0">{{ Config::get('const.COUPON_FLAG')[$form->coupon_flag] }}</td>
                             </tr>
                         </table>
-                        <a href="{{ route('admin.apply.index') }}">戻る</a>
+                        <a class="btn btn-primary" href="{{ route('admin.apply.index') }}">戻る</a>
                     @else
                         <h5>情報の取得に失敗しました</h5>
                     @endif

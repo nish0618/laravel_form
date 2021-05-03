@@ -8,9 +8,9 @@
     </div>
     @if($coupon_flag === 0)
         <div id="apply"><button class="js-modal-open btn btn-primary">クーポンと引き換える</button></div>
-        <div id="applied"><span>引き換え済み</span></div>
+        <div id="applied"><button class="btn btn-secondary" disabled>引き換え済み</button></div>
     @else
-        <div id="applied"><span>引き換え済み</span></div>
+        <div id="applied"><button class="btn btn-secondary" disabled>引き換え済み</button></div>
     @endif
 </div>
 

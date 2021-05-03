@@ -98,4 +98,10 @@ class Form extends Model
     {
         return $this->where('unique_url', $unique_url)->update(['coupon_flag' => 1]);
     }
+
+    // 応募データの件数を取得
+    public function acquisitionDataCount()
+    {
+        return $this->count();;
+    }
 }
