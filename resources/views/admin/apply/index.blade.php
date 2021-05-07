@@ -45,7 +45,7 @@
                             </div>
                         </div>
                     </form>
-                    全{{ $data_count }}件
+                    全{{ $forms->total() }}件
                 </div>
                 <div class="card-body">
                     <table class="table table-sm">
