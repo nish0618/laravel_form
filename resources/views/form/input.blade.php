@@ -117,8 +117,8 @@
             </div>
         </div>
         <div>
-            <button type="submit" id="submit" class="btn btn-primary mt-4">確認画面へ</button>
-            <button id="loading" class="btn btn-dark mt-4" disabled>確認画面へ</button>
+            <button type="submit" id="submit" class="btn btn-primary">確認画面へ</button>
+            <button id="loading" class="btn btn-dark" disabled>確認画面へ</button>
         </div>
     </div>
 </form>
@@ -132,7 +132,7 @@
         });
 
         //送信ボタンを押した際に送信ボタンを無効化する（連打による多数送信回避）
-        $('#submit').click(function () {
+        $('button[type="submit"]').click(function () {
             $(this).hide();
             $('#loading').show();
         });

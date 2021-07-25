@@ -133,7 +133,7 @@
             .always(function (data) {
                 $('.js-modal').fadeOut();
             });
-    }
+        }
 
 </script>
 @endsection
