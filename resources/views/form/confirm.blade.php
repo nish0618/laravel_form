@@ -16,39 +16,62 @@
         <input type="hidden" name="user_agent" value="{{ $_SERVER['HTTP_USER_AGENT'] }}">
         <input type="hidden" name="ip_adress" value="{{ $_SERVER['REMOTE_ADDR'] }}">
         <input type="hidden" name="unique_url" value="{{ $request['unique_url'] }}">
-        <input type="hidden" name="gender" value="{{ $request['gender'] }}">
-        <input type="hidden" name="age" value="{{ $request['age'] }}">
-        <input type="hidden" name="zip" value="{{ $request['zip'] }}">
-        <input type="hidden" name="prefecture" value="{{ $request['prefecture'] }}">
-        <input type="hidden" name="city" value="{{ $request['city'] }}">
-        <input type="hidden" name="email" value="{{ $request['email'] }}">
-        <input type="hidden" name="email_confirmation" value="{{ $request['email_confirmation'] }}">
 
         <div>
             <p>入力内容にお間違えがなければ送信ボタンを押してください。</p>
 
             <div class="mt-4 mb-0">
+                <input type="hidden" name="gender" value="{{ $request['gender'] }}">
                 <div>性別：{{ Config::get('const.GENDER')[$request['gender']] }}</div>
             </div>
 
             <div class="mt-4 mb-0">
+                <input type="hidden" name="age" value="{{ $request['age'] }}">
                 <div>年齢：{{ Config::get('const.AGE')[$request['age']] }}</div>
             </div>
 
             <div class="mt-4 mb-0">
+                <input type="hidden" name="zip" value="{{ $request['zip'] }}">
                 <div>郵便番号：{{ $request['zip'] }}</div>
             </div>
 
             <div class="mt-4 mb-0">
+                <input type="hidden" name="prefecture" value="{{ $request['prefecture'] }}">
                 <div>都道府県：{{ $request['prefecture'] }}</div>
             </div>
 
             <div class="mt-4 mb-0">
+                <input type="hidden" name="city" value="{{ $request['city'] }}">
                 <div>市区町村：{{ $request['city'] }}</div>
             </div>
 
             <div class="mt-4 mb-0">
+                <input type="hidden" name="email" value="{{ $request['email'] }}">
+                <input type="hidden" name="email_confirmation" value="{{ $request['email_confirmation'] }}">
                 <div>Eメール：{{ $request['email'] }}</div>
+            </div>
+
+            <div class="mt-4 mb-0">
+                <input type="hidden" name="quesion_first" value=1>
+                @if($request['answer_first'] === [])
+                    <div>
+                        好きなプログラミング言語を教えて下さい。：
+                        <ul>
+                            <li>未選択</li>
+                        </ul>
+                        <input type="hidden" name="answer_first[]" value=''>
+                    </div>
+                @else
+                    <div>
+                        好きなプログラミング言語を教えて下さい。：
+                        <ul>
+                        @foreach ($request['answer_first'] as $val)
+                            <li>{{ Config::get('const.ANSWER_Q1')[$val] }}</li>
+                            <input type="hidden" name="answer_first[]" value="{{ $val }}">
+                        @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
 
             <div>

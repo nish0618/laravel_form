@@ -110,6 +110,18 @@
             </div>
         </div>
 
+        <div class="mt-4 mb-0 row">
+            <div class="col-md-2">好きなプログラミング言語を教えて下さい。(複数選択可)</div>
+            <div class="col-sm-10">
+                <ul>
+                @foreach (Config::get('const.ANSWER_Q1') as $key => $val)
+                    <li><input id="q1_{{ $key }}" type="checkbox" name="answer_first[]" value="{{ $key }}" {{ is_array(old('answer_first')) && in_array($key, old('answer_first')) ? 'checked' : '' }}>
+                        <label for="q1_{{ $key }}">{{ $val }}</label></li>
+                @endforeach
+                </ul>
+            </div>
+        </div>
+
         <div class="mt-4 mb-0">
             <div>同意頂ける方は、下のチェックボックスを入れてください。</div>
             <div class="form-check">

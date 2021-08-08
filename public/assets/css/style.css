@@ -1,3 +1,12 @@
+ul {
+  list-style: none;
+  display: inline-block;
+}
+
+li {
+  display: inline;
+}
+
 .error {
   color: red;
   font-size: 12px;

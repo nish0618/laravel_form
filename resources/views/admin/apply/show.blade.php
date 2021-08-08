@@ -58,6 +58,18 @@
                             <th class="border-0 w-25"><small class="text-muted">クーポン使用フラグ</small></th>
                             <td class="border-0">{{ Config::get('const.COUPON_FLAG')[$form->coupon_flag] }}</td>
                         </tr>
+                        <tr>
+                            <th class="border-0 w-25"><small class="text-muted">アンケート１（好きなプログラミング言語を教えて下さい。）</small></th>
+                            <td class="border-0">
+                                @foreach ($form->questionnaires->where('key', '1') as $questionnaire)
+                                    @if(isset($questionnaire->value))
+                                        {{ Config::get('const.ANSWER_Q1')[$questionnaire->value] }}
+                                    @else
+                                        未回答
+                                    @endif
+                                @endforeach
+                            </td>
+                        </tr>
                     </table>
                     <a class="btn btn-primary" href="{{ route('admin.apply.index') }}">戻る</a>
                     @else

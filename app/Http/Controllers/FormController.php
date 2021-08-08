@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use App\Mail\ContactMail;
 use App\Models\Deadline;
 use App\Models\Form;
+use App\Models\Questionnaire;
 use Carbon\Carbon;
 use DB;
 use Log;
@@ -45,23 +46,28 @@ class FormController extends Controller
             return redirect()->route('error.index');
         }
 
+        if (empty($request['answer_first'])) {
+            $request['answer_first'] = [];
+        }
+
         return view('form.confirm', [
-            'request' => $request->all(),
+            'request'      => $request->all(),
         ]);
     }
 
-    public function complete(StoreFormRequest $request, Form $form)
+    public function complete(StoreFormRequest $request, Form $form, Questionnaire $questionnaire)
     {
         // 戻るボタン押した時に入力画面へリダイレクト
         if ($request->input('button') === 'back') {
             return redirect()->route('form.input')->withInput();
         }
 
-        $results = DB::transaction(function () use ($request, $form) {
+        $results = DB::transaction(function () use ($request, $form, $questionnaire) {
             // フォーム内容を保存
             $form_data = $form->storeForm($request);
             return [
                 $form_data,
+                $questionnaire->storeQuestionnaireFirst($request, $form_data->id),
             ];
         });
         try {

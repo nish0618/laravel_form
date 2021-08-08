@@ -18,6 +18,7 @@ class ApplyDownloadFormCsvService
         'メールアドレス',
         '年齢',
         '性別',
+        'アンケート１',
         'ユニークURL',
         'クーポン使用フラグ',
         '応募フォーム応募日時'
@@ -63,15 +64,21 @@ class ApplyDownloadFormCsvService
     // CSV出力するデータを加工
     private function processingCsvData(Form $form): array
     {
+        $answer_1 = [];
+        foreach ($form->questionnaires->where('key', '1') as $questionnaire) {
+            array_push($answer_1, config('const.ANSWER_Q1.' . $questionnaire->value));
+        }
+        $answer_1 = implode(',', $answer_1);
 
         $attribute = [
             $form->id,
-            '="' . $form->zip . '"',
+            substr_replace($form->zip, '-', 3, 0),
             $form->prefecture,
             $form->city,
             $form->email,
             config('const.AGE.' . $form->age),
             config('const.GENDER.' . $form->gender),
+            empty($answer_1) ? '未回答' : $answer_1,
             env('APP_URL') . '/redeem/' . $form->unique_url,
             config('const.COUPON_FLAG.' . $form->coupon_flag),
             '="' . $form->created_at->format('Y-m-d H:i') . '"'

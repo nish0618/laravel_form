@@ -27,6 +27,11 @@ class Form extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function questionnaires()
+    {
+        return $this->hasMany(Questionnaire::class);
+    }
+
     // フォーム入力内容を保存
     public function storeForm(StoreFormRequest $request)
     {
@@ -66,19 +71,19 @@ class Form extends Model
     // 検索条件を含めたページャーを生成
     public function acquisitionFormList(Request $request)
     {
-        return $this->searchConditionQuery($request)->where('deleted_at', NULL)->orderBy('id', 'ASC')->paginate(25);
+        return $this->searchConditionQuery($request)->with(['questionnaires'])->where('deleted_at', NULL)->orderBy('id', 'ASC')->paginate(25);
     }
 
     // CSVの検索条件を含めたデータを取得
     public function acquisitionFormCsvList(Request $request)
     {
-        return $this->searchConditionQuery($request)->where('deleted_at', NULL)->orderBy('id', 'ASC')->get()->all();
+        return $this->searchConditionQuery($request)->with(['questionnaires'])->where('deleted_at', NULL)->orderBy('id', 'ASC')->get()->all();
     }
 
     // 応募フォームの詳細情報を取得
     public function acquisitionApplyInfomation(Int $id)
     {
-        return $this->where('id', $id)->first();
+        return $this->with(['questionnaires'])->where('id', $id)->first();
     }
 
     // ユニークURLのアクセスが正しいかチェック
