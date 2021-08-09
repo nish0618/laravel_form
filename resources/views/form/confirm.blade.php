@@ -57,7 +57,7 @@
                     <div>
                         好きなプログラミング言語を教えて下さい。：
                         <ul>
-                            <li>未選択</li>
+                            <li>未回答</li>
                         </ul>
                         <input type="hidden" name="answer_first[]" value=''>
                     </div>
